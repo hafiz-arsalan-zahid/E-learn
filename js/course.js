@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Remove loading overlay immediately when DOM is ready
-    const overlay = document.querySelector('.loading-overlay');
-    if (overlay) {
-        overlay.style.opacity = '0';
+    const loadingOverlay = document.querySelector('.loading-overlay');
+    if (loadingOverlay) {
+        loadingOverlay.style.opacity = '0';
         setTimeout(() => {
-            overlay.style.display = 'none';
+            loadingOverlay.style.display = 'none';
         }, 500);
     }
 
@@ -276,17 +276,82 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial output
     updateOutput(editor.getValue());
 
-    // Sidebar Toggle
+    // Sidebar Toggle with Overlay
     const hamburger = document.querySelector('.hamburger-menu');
     const sidebar = document.querySelector('.course-sidebar');
-    const closeBtn = document.querySelector('.close-sidebar');
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
 
-    hamburger?.addEventListener('click', () => {
-        sidebar.classList.add('active');
-    });
+    // Create close button if it doesn't exist
+    let closeButton = sidebar.querySelector('.close-sidebar');
+    if (!closeButton) {
+        closeButton = document.createElement('button');
+        closeButton.className = 'close-sidebar';
+        closeButton.innerHTML = `<i class="fas fa-times"></i>`;
+        
+        // Find or create sidebar header
+        let sidebarHeader = sidebar.querySelector('.sidebar-header');
+        if (!sidebarHeader) {
+            sidebarHeader = document.createElement('div');
+            sidebarHeader.className = 'sidebar-header';
+            sidebarHeader.innerHTML = `<h2><i class="fab fa-html5"></i> HTML Course</h2>`;
+            sidebar.insertBefore(sidebarHeader, sidebar.firstChild);
+        }
+        
+        sidebarHeader.appendChild(closeButton);
+    }
 
-    closeBtn?.addEventListener('click', () => {
-        sidebar.classList.remove('active');
+    function closeSidebar() {
+        sidebar?.classList.remove('active');
+        overlay.classList.remove('active');
+        // Only prevent scroll on mobile
+        if (window.innerWidth <= 1024) {
+            document.body.classList.remove('sidebar-open');
+        }
+        
+        // Animate hamburger
+        hamburger.classList.remove('hidden');
+        
+        // Animate close button
+        closeButton.classList.remove('visible');
+        
+        // Smooth transition for overlay
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    }
+
+    function openSidebar() {
+        sidebar?.classList.add('active');
+        overlay.style.display = 'block';
+        
+        // Force reflow
+        overlay.offsetHeight;
+        
+        overlay.classList.add('active');
+        // Only prevent scroll on mobile
+        if (window.innerWidth <= 1024) {
+            document.body.classList.add('sidebar-open');
+        }
+        
+        // Animate hamburger
+        hamburger.classList.add('hidden');
+        
+        // Animate close button
+        setTimeout(() => {
+            closeButton.classList.add('visible');
+        }, 300);
+    }
+
+    hamburger?.addEventListener('click', openSidebar);
+    closeButton?.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar?.classList.contains('active')) {
+            closeSidebar();
+        }
     });
 
     // Section Expansion
@@ -474,26 +539,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sidebar Toggle Functionality
-    const closeSidebarBtn = document.querySelector('.close-sidebar');
-    const mainContent = document.querySelector('.course-content');
+    // Close button functionality in main content
+    const mainCloseButton = document.querySelector('.close-button');
     
-    closeSidebarBtn?.addEventListener('click', () => {
-        sidebar.classList.add('collapsed');
-        mainContent.classList.add('expanded');
-        
-        // Add button to reopen sidebar
-        if (!document.querySelector('.open-sidebar')) {
-            const openBtn = document.createElement('button');
-            openBtn.className = 'open-sidebar';
-            openBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            mainContent.appendChild(openBtn);
-            
-            openBtn.addEventListener('click', () => {
-                sidebar.classList.remove('collapsed');
-                mainContent.classList.remove('expanded');
-                openBtn.remove();
-            });
+    function closeMainContent() {
+        // Navigate back to the previous page
+        window.location.href = '../index.html';
+        // Or you can use:
+        // window.history.back();
+    }
+
+    mainCloseButton?.addEventListener('click', closeMainContent);
+
+    // Add keyboard shortcut (Esc key) for closing
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !sidebar?.classList.contains('active')) {
+            closeMainContent();
         }
     });
 });

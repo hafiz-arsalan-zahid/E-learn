@@ -26,17 +26,26 @@ body {
     line-height: 1.6;
 }
 
+/* Hamburger and Close Button Shared Styles */
+.hamburger-menu, .close-sidebar {
+    position: fixed;
+    z-index: 1000;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
 /* Hamburger Menu */
 .hamburger-menu {
-    display: none;
-    position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
+    padding: 15px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .hamburger-menu span {
@@ -45,7 +54,50 @@ body {
     height: 3px;
     background: var(--primary);
     margin: 5px 0;
-    transition: 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-menu.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+}
+
+/* Close Button */
+.close-sidebar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    color: var(--primary);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.close-sidebar.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.close-sidebar i {
+    font-size: 18px;
+}
+
+/* Sidebar Animation */
+.course-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.course-sidebar.active {
+    transform: translateX(0);
 }
 
 /* Course Layout */
@@ -68,8 +120,11 @@ body {
 
 .sidebar-header {
     position: relative;
-    padding: 1rem;
+    padding: 1.5rem;
     border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sidebar-header h2 {
@@ -78,10 +133,42 @@ body {
     gap: 0.5rem;
     font-size: 1.2rem;
     color: var(--text);
+    margin: 0;
 }
 
 .sidebar-header h2 i {
     color: var(--primary);
+}
+
+.sidebar-header .close-sidebar {
+    position: relative;
+    top: auto;
+    right: auto;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-header .close-sidebar:hover {
+    background: var(--primary);
+    color: var(--background);
+    transform: scale(1.05);
+}
+
+.sidebar-header .close-sidebar i {
+    font-size: 16px;
 }
 
 /* Progress Bar */
@@ -368,13 +455,14 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     z-index: 100;
+    backdrop-filter: blur(10px);
 }
 
 .back-button:hover {
     background: var(--primary);
     color: var(--background);
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
 }
 
 /* Loading Animation */
@@ -412,27 +500,44 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .course-sidebar {
-        position: fixed;
-        left: -300px;
-        top: 0;
-        bottom: 0;
-        z-index: 1000;
-        transition: transform 0.3s ease;
+    .course-content {
+        padding-top: 90px;
+        margin-left: 0;
+        width: 100%;
     }
 
-    .course-sidebar.active {
-        transform: translateX(300px);
+    .course-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+        z-index: 1000;
+        background: rgba(30, 30, 30, 0.95);
+        backdrop-filter: blur(10px);
     }
 
     .hamburger-menu {
         display: block;
     }
+
+    .hamburger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    .hamburger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
 }
 
 @media (max-width: 768px) {
     .course-content {
-        padding: 1rem;
+        padding: 70px 1rem 1rem 1rem;
     }
 
     .code-playground {
@@ -456,32 +561,20 @@ body {
     }
 
     .back-button {
-        top: auto;
-        bottom: 20px;
-        right: 20px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
     }
 
     .hamburger-menu {
-        background: rgba(10, 25, 47, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 8px;
-        padding: 15px;
+        padding: 12px;
     }
 
-    .hamburger-menu span {
-        transition: 0.3s;
+    .back-button {
+        right: 10px;
     }
 
-    .hamburger-menu.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger-menu.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger-menu.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+    .hamburger-menu {
+        left: 10px;
     }
 }
 
@@ -917,30 +1010,6 @@ body {
     border-bottom: 1px solid rgba(0, 255, 0, 0.1);
 }
 
-/* Close Button Styling */
-.close-button {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.close-button:hover {
-    background: rgba(255, 0, 0, 0.1);
-    color: #ff3333;
-}
-
-.close-button i {
-    font-size: 16px;
-}
-
 /* HTML Course Title */
 .html-course-title {
     display: flex;
@@ -972,29 +1041,100 @@ body {
     border-bottom: 1px solid rgba(0, 255, 0, 0.1);
 }
 
-/* Sidebar Close Button */
-.close-sidebar {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
+/* Overlay Animation */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    z-index: 999;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Only show overlay on mobile devices */
+@media (max-width: 1024px) {
+    .sidebar-overlay.active {
+        display: block;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(3px);
+    }
+    
+    /* Prevent main content scroll when sidebar is open */
+    body.sidebar-open {
+        overflow: hidden;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+    .sidebar-overlay {
+        display: none !important;
+    }
+    
+    /* Always allow scrolling on desktop */
+    body {
+        overflow: auto !important;
+    }
+    
+    .course-content {
+        overflow-y: auto;
+    }
+}
+
+/* Ensure sidebar is scrollable independently */
+.course-sidebar {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Close Button in Main Content */
+.close-button {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    width: 32px;
-    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    width: 32px;
+    height: 32px;
     transition: all 0.3s ease;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
 }
 
-.close-sidebar:hover {
-    background: rgba(255, 0, 0, 0.1);
-    color: #ff3333;
+.close-button i {
+    font-size: 16px;
 }
 
-.close-sidebar i {
-    font-size: 18px;
+.close-button:hover {
+    background: var(--primary);
+    color: var(--background);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Course Header Layout */
+.course-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.html-course-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.html-course-title i {
+    color: var(--primary);
 }
