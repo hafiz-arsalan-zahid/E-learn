@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{ Hafiz Arsalan Zahid } | Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loading">
+    <!-- Matrix Background -->
+    <canvas id="matrix"></canvas>
+
+    <!-- Terminal Header -->
+    <div class="terminal-header">
+        <div class="terminal-buttons">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="terminal-title">hafiz@arsalan:~</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="cyber-nav">
+        <div class="nav-content">
+            <div class="logo">
+                <pre class="ascii-art">
+  _    _          ______ 
+ | |  | |   /\   |___  /
+ | |__| |  /  \     / / 
+ |  __  | / /\ \   / /  
+ | |  | |/ ____ \ / /__ 
+ |_|  |_/_/    \_/_____|
+                </pre>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="cyber-link" data-text="Home">Home</a>
+                <div class="dropdown">
+                    <a href="#" class="cyber-link dropdown-trigger" data-text="Courses">
+                        Courses <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="courses/html.html" class="dropdown-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML Course</span>
+                            <small>Learn HTML Fundamentals</small>
+                        </a>
+                        <!-- Add more courses here -->
+                    </div>
+                </div>
+                <a href="#skills" class="cyber-link" data-text="Skills">Skills</a>
+                <a href="#projects" class="cyber-link" data-text="Projects">Projects</a>
+                <a href="#contact" class="cyber-link" data-text="Contact">Contact</a>
+               
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="glitch-container">
+            <div class="glitch" data-text="Hafiz Arsalan">Hafiz Arsalan Zahid</div>
+            <div class="terminal-text">
+                <span class="prompt">$</span>
+                <span class="typed-text"></span>
+                <span class="cursor">█</span>
+            </div>
+        </div>
+        <div class="code-snippet">
+            <pre><code>
+class Developer {
+    constructor() {
+        this.name = "Hafiz Arsalan Zahid";
+        this.role = "Student Developer";
+        this.grade = 9;
+        this.skills = ["HTML", "CSS", "JavaScript"];
+    }
+}
+            </code></pre>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+            
+            <div class="skills-container">
+                <!-- Frontend Development -->
+                <div class="skill-category" data-aos="fade-up">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend Development</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5/CSS3</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">React.js</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Development -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend Development</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Technologies</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git/GitHub</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">AWS</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Project Card 1 -->
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="far fa-folder-open project-icon"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">AI Chat Application</h3>
+                        <p class="project-description">
+                            A real-time chat application powered by OpenAI's GPT-3. Features include conversation memory,
+                            code highlighting, and markdown support.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="far fa-folder-open project-icon"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">E-Learning Platform</h3>
+                        <p class="project-description">
+                            A comprehensive learning management system with video courses, quizzes,
+                            and progress tracking.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="far fa-folder-open project-icon"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Crypto Dashboard</h3>
+                        <p class="project-description">
+                            Real-time cryptocurrency tracking dashboard with price alerts, portfolio management,
+                            and market analysis tools.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="cyber-title" data-aos="fade-up">Initialize Connection</h2>
+        <div class="contact-container">
+            <form class="cyber-form" data-aos="fade-up">
+                <div class="form-group">
+                    <input type="text" required id="name">
+                    <label for="name">$ username</label>
+                    <div class="line"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" required id="email">
+                    <label for="email">$ email</label>
+                    <div class="line"></div>
+                </div>
+                <div class="form-group">
+                    <textarea required id="message"></textarea>
+                    <label for="message">$ message</label>
+                    <div class="line"></div>
+                </div>
+                <button type="submit" class="cyber-button">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Available Courses</h2>
+            
+            <div class="courses-grid">
+                <!-- HTML Course Card -->
+                <div class="course-card" data-aos="fade-up">
+                    <div class="course-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>HTML Course</h3>
+                        <p>Learn HTML fundamentals and build web pages from scratch.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-book"></i> 10 Lessons</span>
+                            <span><i class="fas fa-clock"></i> 2 Hours</span>
+                        </div>
+                        <a href="courses/html.html" class="course-btn">
+                            Start Learning
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CSS Course Card (Coming Soon) -->
+                <div class="course-card coming-soon" data-aos="fade-up" data-aos-delay="100">
+                    <div class="course-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>CSS Course</h3>
+                        <p>Style your web pages with CSS. Master layouts and animations.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <button class="course-btn disabled">
+                            Coming Soon
+                            <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- JavaScript Course Card (Coming Soon) -->
+                <div class="course-card coming-soon" data-aos="fade-up" data-aos-delay="200">
+                    <div class="course-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>JavaScript Course</h3>
+                        <p>Add interactivity to your websites with JavaScript.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <button class="course-btn disabled">
+                            Coming Soon
+                            <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="cyber-footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="cyber-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="cyber-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="cyber-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <div class="footer-text">
+                <pre class="ascii-signature">
+By Hafiz Arsalan Zahid
+                </pre>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/matrix.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Add click handler for course cards
+        document.querySelectorAll('.course-card:not(.coming-soon)').forEach(card => {
+            card.addEventListener('click', () => {
+                const link = card.querySelector('.course-btn');
+                if (link && !link.classList.contains('disabled')) {
+                    window.location.href = link.href;
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

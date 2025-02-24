@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Course | Learn HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/course-style.css">
+</head>
+<body class="dark-theme">
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <!-- Course Layout -->
+    <div class="course-layout">
+        <!-- Sidebar -->
+        <nav class="course-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fab fa-html5"></i> HTML Course</h2>
+                <button class="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="course-progress">
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%"></div>
+                </div>
+                <span class="progress-text">0% Complete</span>
+            </div>
+
+            <div class="course-sections">
+                <div class="section active">
+                    <div class="section-header">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>1. Introduction to HTML</span>
+                    </div>
+                    <div class="section-content">
+                        <a href="#what-is-html" class="section-link active" data-lesson="1.1">
+                            <span class="lesson-number">1.1</span>
+                            What is HTML?
+                        </a>
+                        <a href="#html-structure" class="section-link" data-lesson="1.2">
+                            <span class="lesson-number">1.2</span>
+                            HTML Document Structure
+                        </a>
+                        <a href="#html-elements" class="section-link" data-lesson="1.3">
+                            <span class="lesson-number">1.3</span>
+                            HTML Elements
+                        </a>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>2. Text & Typography</span>
+                    </div>
+                    <div class="section-content">
+                        <a href="#headings" class="section-link" data-lesson="2.1">
+                            <span class="lesson-number">2.1</span>
+                            Headings
+                        </a>
+                        <a href="#paragraphs" class="section-link" data-lesson="2.2">
+                            <span class="lesson-number">2.2</span>
+                            Paragraphs
+                        </a>
+                        <a href="#text-formatting" class="section-link" data-lesson="2.3">
+                            <span class="lesson-number">2.3</span>
+                            Text Formatting
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="course-content">
+            <div class="course-header">
+                <div class="html-course-title">
+                    <i class="fab fa-html5"></i>
+                    HTML Course
+                </div>
+                <button class="close-button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="content-header">
+                <button class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="animate-fade">What is HTML?</h1>
+            </div>
+
+            <div class="lesson-content animate-slide">
+                <div class="lesson-text">
+                    <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages and web applications. It provides the basic structure and content of a webpage.</p>
+                    
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <p>HTML uses tags to define different elements on a webpage. Each tag serves a specific purpose.</p>
+                    </div>
+                </div>
+
+                <!-- Code Playground -->
+                <div class="code-playground animate-fade">
+                    <div class="playground-header">
+                        <div class="file-tabs">
+                            <button class="file-tab active">
+                                <i class="fab fa-html5"></i>
+                                index.html
+                            </button>
+                        </div>
+                        <div class="playground-actions">
+                            <button class="action-btn reset-btn">
+                                <i class="fas fa-undo"></i>
+                                Reset
+                            </button>
+                            <button class="action-btn run-btn">
+                                <i class="fas fa-play"></i>
+                                Run
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="editor-container">
+                        <div id="editor" class="code-editor"></div>
+                    </div>
+
+                    <div class="preview-container">
+                        <div class="preview-header">
+                            <span>Output</span>
+                            <button class="toggle-preview">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        <div class="preview-frame">
+                            <iframe id="preview" sandbox="allow-scripts"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-navigation animate-fade">
+                    <button class="nav-btn prev-btn" disabled>
+                        <i class="fas fa-arrow-left"></i>
+                        Previous Lesson
+                    </button>
+                    <button class="nav-btn next-btn">
+                        Next Lesson
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.js"></script>
+    <script src="../js/course.js"></script>
+</body>
+</html> 
