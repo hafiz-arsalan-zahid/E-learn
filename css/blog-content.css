@@ -1,0 +1,259 @@
+/* Blog Content Specific Styles */
+:root {
+    --primary-color: #ff4747;
+    --secondary-color: #ff6b6b;
+    --accent-color: #ff8533;
+    --text-color: #333333;
+    --light-text: #666666;
+    --background: #ffffff;
+    --light-background: #f8f9fa;
+}
+
+/* Blog Content Sections */
+.blog-content-section {
+    padding: 6rem 2rem;
+    margin: 0;
+    background: var(--background);
+    position: relative;
+}
+
+.blog-content-section:nth-child(even) {
+    background: var(--light-background);
+}
+
+/* What is Blog Section */
+.what-is-blog {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem;
+}
+
+.what-is-blog .content {
+    flex: 1;
+}
+
+.what-is-blog .content ul {
+    list-style-type: none;
+    margin: 1.5rem 0;
+}
+
+.what-is-blog .content ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.what-is-blog .content ul li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+.what-is-blog .image {
+    flex: 1;
+    position: relative;
+}
+
+.what-is-blog img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Blogger Section */
+.blogger-section {
+    text-align: center;
+    background: linear-gradient(135deg, #fff5f5 0%, #fff0ea 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.blogger-section .logo {
+    width: 80px;
+    margin: 2rem auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+.blogger-section .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    margin: 2rem 0;
+    transition: all 0.3s ease;
+}
+
+.blogger-section .cta-link:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Steps Section */
+.steps-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.step-card {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.step-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.step-card h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* Benefits Section */
+.benefits-grid {
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.benefit-card {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--light-text);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .what-is-blog {
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blog-content-section {
+        padding: 4rem 1rem;
+    }
+
+    .what-is-blog {
+        flex-direction: column;
+    }
+
+    .what-is-blog .image {
+        order: -1;
+    }
+
+    .steps-section,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .blog-content-section {
+        padding: 3rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .what-is-blog .content ul {
+        margin: 1rem 0;
+    }
+
+    .step-card,
+    .benefit-card {
+        padding: 1.5rem;
+    }
+}
